@@ -49,13 +49,20 @@ def callback():
 
     return 'OK'
 
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text
 
+    f = open(mojisu.txt)
+    mode = f.read()
+    f.close()
+
     if text == "おこ":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("ごめんなさい"))
+        return
+
+    if text == "モード":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(mode))
         return
 
     if text == "文字数はじめ":
@@ -66,6 +73,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード off"))
         return 
 
+    
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text))
