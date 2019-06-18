@@ -13,14 +13,11 @@ from linebot.models import (
 )
 
 
-def filerw():
-  f = open("mode.txt","r")
-  mode = f.readline()
-  f.close()
-  if mode == "copy" :
-      newmode = "count"
-  elif mode == "count" :
-      newmode = "copy"
+def filerw(before,after):
+  if before == "copy" :
+      newmode = after
+  elif before == "count" :
+      newmode = after
   f = open("mode.txt","w")
   f.write(newmode)
   f.close()
@@ -81,12 +78,12 @@ def handle_message(event):
 
     if text == "文字数はじめ":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード on"))
-        filerw();
+        filerw("copy","count");
         return 
 
     if text == "文字数おわり":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード off"))
-        filerw();
+        filerw("count","copy");
         return 
 
     
