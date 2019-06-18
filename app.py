@@ -77,12 +77,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage("copy on"))
         filerw("count" ,"copy");
         return 
-'''
-    if text == "おわり":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(mode + "off"))
-        filerw(mode , "nothing");
-        return 
-'''
+
     if mode == "count":
         length = len(text)
         line_bot_api.reply_message(
