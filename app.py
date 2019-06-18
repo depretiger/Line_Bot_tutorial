@@ -58,6 +58,13 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage("ごめんなさい"))
         return
 
+    if text == "文字数はじめ":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード on"))
+        return 
+
+    if text == "文字数おわり":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード off"))
+        return 
 
     line_bot_api.reply_message(
         event.reply_token,
