@@ -13,7 +13,7 @@ from linebot.models import (
 )
 
 
-def filerw(before,after):
+def filerw(after):
     f = open("mode.txt","w")
     f.write(after)
     f.close()
@@ -70,12 +70,12 @@ def handle_message(event):
 
     if text == "カウント" or text == "かうんと":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("count on"))
-        filerw("copy" ,"count");
+        filerw("count");
         return 
 
     if text == "コピー" or text == "こぴー":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("copy on"))
-        filerw("count" ,"copy");
+        filerw("copy");
         return 
 
     if mode == "count":
