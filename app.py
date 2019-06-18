@@ -76,12 +76,12 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(mode))
         return
 
-    if text == "文字数はじめ":
+    if text == "カウント" or text == "かうんと":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード on"))
         filerw("copy","count");
         return 
 
-    if text == "文字数おわり":
+    if text == "おわり":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード off"))
         filerw("count","copy");
         return 
