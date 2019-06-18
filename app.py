@@ -86,10 +86,16 @@ def handle_message(event):
         filerw("count","copy");
         return 
 
-    
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text))
+    if mode == "count":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage("かうんと"))
+        return
+
+    if mode == "copy":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text))
 
 
 if __name__ == "__main__":
