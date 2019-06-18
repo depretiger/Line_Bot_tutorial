@@ -56,11 +56,13 @@ def callback():
 
     return 'OK'
 
+'''
 talk = {
         "おこ" : "ごめんなさい"
         "おねしょ" : "おもしょ"
         "おもしょ" : "おねしょ"
         }
+'''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text
@@ -68,17 +70,16 @@ def handle_message(event):
     f = open("mode.txt")
     mode = f.read()
     f.close()
-
+'''
     if text in talk:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(talk[text]))
-        return
     
     if text == "モード":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(mode))
         return
-
+'''
     if text == "カウント" or text == "かうんと":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("count on"))
         filerw(mode ,"count");
