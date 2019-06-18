@@ -69,10 +69,10 @@ def handle_message(event):
     mode = f.read()
     f.close()
 
-    if event.message.text in talk:
+    if text in talk:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=talk[event.message.text]))
+            TextSendMessage(talk[text]))
         return
     
     if text == "モード":
