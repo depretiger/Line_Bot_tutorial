@@ -84,6 +84,12 @@ def handle_message(event):
         filerw("copy");
         return 
 
+    if text == "おわり":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("finish"))
+        filerw("nothing")
+        return
+
+
     if text in talk:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(talk[text]))
         return
