@@ -53,7 +53,7 @@ def callback():
 def handle_message(event):
     text = event.message.text
 
-    f = open("mojisu.txt")
+    f = open("mode.txt")
     mode = f.read()
     f.close()
 
