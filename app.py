@@ -12,6 +12,20 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
+
+def filerw():
+  f = open("mode.txt","r")
+  mode = f.readline()
+  f.close()
+  if mode == "copy" :
+      newmode = "count"
+  elif mode == "count" :
+      newmode = "copy"
+  f = open("mode.txt","w")
+  f.write(newmode)
+  f.close()
+
+
 app = Flask(__name__)
 
 # 環境変数からchannel_secret・channel_access_tokenを取得
@@ -67,10 +81,12 @@ def handle_message(event):
 
     if text == "文字数はじめ":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード on"))
+        filerw();
         return 
 
     if text == "文字数おわり":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("文字数モード off"))
+        filerw();
         return 
 
     
