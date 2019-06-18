@@ -87,9 +87,10 @@ def handle_message(event):
         return 
 
     if mode == "count":
+        length = len(text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage("かうんと"))
+            TextSendMessage(str(length) + "文字"))
         return
 
     if mode == "copy":
