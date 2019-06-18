@@ -14,9 +14,9 @@ from linebot.models import (
 
 
 def filerw(before,after):
-  f = open("mode.txt","w")
-  f.write(after)
-  f.close()
+    f = open("mode.txt","w")
+    f.write(after)
+    f.close()
 
 
 app = Flask(__name__)
@@ -56,13 +56,6 @@ def callback():
 
     return 'OK'
 
-'''
-talk = {
-        "おこ" : "ごめんなさい"
-        "おねしょ" : "おもしょ"
-        "おもしょ" : "おねしょ"
-        }
-'''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text
@@ -70,31 +63,26 @@ def handle_message(event):
     f = open("mode.txt")
     mode = f.read()
     f.close()
-'''
-    if text in talk:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(talk[text]))
     
     if text == "モード":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(mode))
         return
-'''
+
     if text == "カウント" or text == "かうんと":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("count on"))
-        filerw(mode ,"count");
+        filerw("copy" ,"count");
         return 
 
     if text == "コピー" or text == "こぴー":
         line_bot_api.reply_message(event.reply_token, TextSendMessage("copy on"))
-        filerw(mode ,"copy");
+        filerw("count" ,"copy");
         return 
-
+'''
     if text == "おわり":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(mode + "off"))
         filerw(mode , "nothing");
         return 
-
+'''
     if mode == "count":
         length = len(text)
         line_bot_api.reply_message(
