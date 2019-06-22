@@ -60,6 +60,7 @@ talk = {
         "おこ" : "ごめんなさい",
         "おもしょ" : "おねしょ",
         "おねしょ" : "おもしょ"
+        "ぬるぽ" : "ガッ！"
 }
 
 @handler.add(MessageEvent, message=TextMessage)
